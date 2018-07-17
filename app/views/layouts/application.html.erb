@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Loginfacebook</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'animate', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'https://code.jquery.com/jquery.js' %>
+    <%= javascript_include_tag 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js' %>
+    <%= javascript_include_tag 'flyto' %>
+
+    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' %>
+  </head>
+
+  <body>
+      <% if user_signed_in? %>
+        <%= render 'layout_header/header_user' %>
+      <%else%>
+        <%= render 'layout_header/header' %>
+      <%end %>
+    <%= yield %>
+    <%= render 'layout_footer/footer'%>
+  </body>
+</html>

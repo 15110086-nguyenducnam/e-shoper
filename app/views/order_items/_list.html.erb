@@ -1,0 +1,43 @@
+<table class="table table-condensed">
+  <thead>
+    <tr class="cart_menu">
+      <td class="image">Item</td>
+      <td class="description"></td>
+      <td class="price">Price</td>
+      <td class="quantity">Quantity</td>
+      <td class="total">Total</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% order_items.each do |o| %>
+    <tr>
+      <td class="cart_product">
+        <a href=""><img src="images/cart/one.png" alt=""></a>
+        <%= image_tag(o.product.image_url, hight: '110px', width: '110px') %>
+      </td>
+      <td class="cart_description">
+        <h4><a href=""><%= o.product.name %></a></h4>
+      </td>
+      <td class="cart_price">
+        <p>$<%= o.unit_price %></p>
+      </td>
+      <td class="cart_quantity">
+        <div class="cart_quantity_button">
+          <%= link_to('+', order_item_path(id: o.id,add: true), class: "cart_quantity", remote:true, method: "put") %>
+          <input class="cart_quantity_input" type="text" name="quantity" value=<%= o.quantity %> autocomplete="off" size="2">
+          <%= link_to("-", order_item_path(id: o.id, sub: true), class: "cart_quantity",remote: true, method: "put") %>
+        </div>
+      </td>
+      <td class="cart_total">
+        <p class="cart_total_price">$ <%= o.total_price %></p>
+      </td>
+      <td class="cart_delete">
+        <%= link_to order_item_path(id: o.id), method: "delete", remote: true, class: "cart_quantity_delete" do %>
+        <i class="fa fa-times"></i>
+        <% end -%>
+      </td>
+    </tr>
+    <% end -%>
+  </tbody>
+</table>

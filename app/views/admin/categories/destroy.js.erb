@@ -1,0 +1,7 @@
+<% if @success %>
+  // JS to clear form, hide modal
+  $('#myModalXoa').modal('hide');
+  $('.modal-backdrop').remove();
+    // update list product
+   $('#category-list').html("<%=j render '/admin/categories/list', category: @get_category %>")
+<% end %>

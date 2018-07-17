@@ -1,0 +1,15 @@
+<h2>Category</h2>
+<div class="panel-group category-products" id="accordian"><!--category-productsr-->
+<% categories_item.each do |o| %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+    <%= link_to(o.name, category_path(id: o.id)) %>
+    </h4>
+  </div>
+</div>
+<% end -%>
+</div><!--/category-products-->
+<div class="shipping text-center"><!--shipping-->
+<img src="images/home/shipping.jpg" alt="" />
+</div><!--/shipping-->

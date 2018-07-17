@@ -1,0 +1,70 @@
+<section>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="left-sidebar">
+            <%= render 'home/left_sidebar', categories_item: @categories_item %>
+          </div>
+        </div>
+        <div class="col-sm-9 padding-right">
+          <div class="product-details"><!--product-details-->
+            <div class="col-sm-5">
+              <div id="similar-product" class="carousel slide" data-ride="carousel">
+                  <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                    <div class="item active">
+                      <%= image_tag(@product_detail.image_url.to_s) %>
+                      <a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
+                      <a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
+                    </div>
+                    <div class="item">
+                      <a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
+                      <a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
+                      <a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
+                    </div>
+                    <div class="item">
+                      <a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
+                      <a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
+                      <a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
+                    </div>
+                  </div>
+                  <!-- Controls -->
+                  <a class="left item-control" href="#similar-product" data-slide="prev">
+                  <i class="fa fa-angle-left"></i>
+                  </a>
+                  <a class="right item-control" href="#similar-product" data-slide="next">
+                  <i class="fa fa-angle-right"></i>
+                  </a>
+              </div>
+            </div>
+            <div class="col-sm-7">
+              <div class="product-information"><!--/product-information-->
+                <img src="images/product-details/new.jpg" class="newarrival" alt="" />
+                <h2><%= @product_detail.name %></h2>
+                <p>Web ID: <%= @product_detail.id %></p>
+                <img src="images/product-details/rating.png" alt="" />
+                <span>
+                  <span>US $ <%= @product_detail.price%></span>
+                  <label>Quantity:</label>
+                  <input type="text" value="3" />
+                  <%= form_for @order_item, remote: true do |f| %>
+                  <%= f.hidden_field :quantity, value: 1 %>
+                  <%= f.hidden_field :product_id, value: @product_detail.id %>
+                  <%= f.button :submit, class: "add-to-cart btn btn-default my-btn" do %>
+                  <i class="fa fa-shopping-cart"></i>
+                  Add to cart
+                  <% end -%>
+                  <% end -%>
+                </span>
+                <p><b>Availability:</b> In Stock</p>
+                <p><b>Condition:</b> New</p>
+                <p><b>Category:</b> <%= @product_detail.category.name %></p>
+                <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+              </div><!--/product-information-->
+            </div>
+          </div><!--/product-details-->
+
+        </div>
+      </div>
+    </div>
+  </section>

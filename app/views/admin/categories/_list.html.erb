@@ -1,0 +1,26 @@
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Option</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% category.each do |c| %>
+      <tr>
+        <td><%= c.name %></td>
+        <td><%= c.description %></td>
+        <td>
+          <%= link_to 'Edit', admin_category_path(id: c.id),class: "btn btn-outline-info" %>
+          <button type="button" class="btn btn-outline-danger"
+          data-toggle="modal" data-target="#myModalXoa"
+          data-masp=<%= c.name%>
+          data-mass=<%= c.id%>
+          >Delete</button>
+        </td>
+      </tr>
+      <% end -%>
+    </tbody>
+  </table>
+</div>
