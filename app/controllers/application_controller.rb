@@ -1,8 +1,10 @@
 class ApplicationController < ActionController::Base
-    before_action :configure_permitted_parameters, if: :devise_controller?
-    before_action :set_cache_headers
-    protect_from_forgery with: :exception
-    helper_method :current_order
+
+  # trigger
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_cache_headers
+  protect_from_forgery with: :exception
+  helper_method :current_order
 
   def configure_permitted_parameters
     added_attrs = [:username, :email, :password, :password_confirmation, :remember_me]
@@ -17,23 +19,19 @@ class ApplicationController < ActionController::Base
       return Order.new
     end
   end
-  # redirect after login sucessful
-   protected
-    def after_sign_in_path_for(resource)
-      if current_user.admin?
-         request.env['omniauth.origin'] || stored_location_for(resource) || admin_dashboard_path
-  # do something
-      else
-          request.env['omniauth.origin'] || stored_location_for(resource) || root_path
-      end
-    end
-    #  redirect after logout
-    protected
-    def after_sign_out_path_for(resource)
-      request.env['omniauth.origin'] || stored_location_for(resource) || new_user_session_path
-    end
 
-   private
+  # redirect after login sucessful
+  protected
+  def after_sign_in_path_for(resource)
+  request.env['omniauth.origin'] || stored_location_for(resource) || (current_user.admin ? admin_dashboard_path : root_path)
+  end
+
+  #redirect after logout
+  def after_sign_out_path_for(resource)
+    request.env['omniauth.origin'] || stored_location_for(resource) || new_user_session_path
+  end
+
+  private
   def set_cache_headers
     response.headers["Cache-Control"] = "no-cache, no-store"
     response.headers["Pragma"] = "no-cache"

@@ -1,11 +1,17 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  attr_writer :login
+
+  #validates
+  validate :validate_username
+
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable, authentication_keys: [:login]
+          :recoverable, :rememberable, :trackable,
+          :validatable, authentication_keys: [:login]
   devise :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
-    def self.new_with_session params, session
+  def self.new_with_session params, session
     super.tap do |user|
       if data = session["devise.facebook_data"] &&
         session["devise.facebook_data"]["extra"]["raw_info"]
@@ -23,8 +29,6 @@ class User < ApplicationRecord
   end
 
   # login by email and name
-  attr_writer :login
-
   def login
     @login || self.username || self.email
   end
@@ -37,19 +41,17 @@ class User < ApplicationRecord
       if conditions[:username].nil?
         where(conditions).first
       else
-      where(username: conditions[:username]).first
+        where(username: conditions[:username]).first
+      end
     end
-    end
-    end
-
-  validate :validate_username
+  end
 
   def validate_username
     if User.where(email: username).exists?
       errors.add(:username, :invalid)
     end
   end
-  
+
   # reset password
   def self.valid_login?(email, password)
     user = where(email: email).first

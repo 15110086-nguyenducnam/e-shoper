@@ -1,11 +1,14 @@
 class OrderItem < ApplicationRecord
+  # acssociations
   belongs_to :product
   belongs_to :order
 
+  # validates
   validates :quantity, presence: true, numericality: {only_integer: true, greater_than: 0}
   validate :product_present
   validate :oder_present
 
+  # triger
   before_save :finalize
 
   def unit_price

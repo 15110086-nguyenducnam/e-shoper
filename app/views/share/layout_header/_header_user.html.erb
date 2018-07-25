@@ -1,17 +1,16 @@
-
 <header id="header"><!--header-->
 <div class="header_top"><!--header_top-->
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="contactinfo">
-              <ul class="nav nav-pills">
-                <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-                <li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-sm-6">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="contactinfo">
+        <ul class="nav nav-pills">
+          <li><a href=""><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
+          <li><a href=""><i class="fa fa-envelope"></i> info@domain.com</a></li>
+        </ul>
+      </div>
+    </div>
+  <div class="col-sm-6">
             <div class="social-icons pull-right">
               <ul class="nav navbar-nav">
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -21,10 +20,10 @@
                 <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
               </ul>
             </div>
-          </div>
         </div>
-      </div>
-    </div><!--/header_top-->
+  </div>
+</div>
+</div><!--/header_top-->
 <div class="header-middle"><!--header-middle-->
 <div class="container">
   <div class="row">
@@ -32,15 +31,24 @@
       <div class="logo pull-left">
         <a href=<%=root_path%>><%=image_tag("home/logo.png")%></a>
       </div>
+
     </div>
     <div class="col-sm-8">
       <div class="shop-menu pull-right">
           <ul class="nav navbar-nav">
-            <li><a href=""><i class="fa fa-user"></i> Account</a></li>
+            <% if current_user.admin? %>
+              <li><a href=  <%= admin_dashboard_path %> ><i class="fa fa-user"></i> <%= current_user.username %></a></li>
+            <% else %>
+              <li><a href=""><i class="fa fa-user"></i> <%= current_user.username %></a></li>
+            <% end -%>
             <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
             <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-            <li><a href= <%= carts_show_path %> ><i class="fa fa-shopping-cart"></i> Cart</a></li>
-            <li><a href=<%=new_user_session_path%> class="active"><i class="fa fa-lock"></i> Login</a></li>
+            <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+            <li>
+              <%= link_to destroy_user_session_path, class: 'active', method: :delete do %>
+              <i class="fa fa-lock"></i> Logout</a>
+            </li>
+            <% end %>
           </ul>
       </div>
     </div>
@@ -84,10 +92,7 @@
 </div>
 <div class="col-sm-3">
   <div class="search_box pull-right">
-    <%= form_for 'product',url: products_path, method: :get, id: "form-search" do |f| %>
-      <%= f.text_field :name, placeholder: "Search" %>
-      <%= f.submit "Search"  %>
-    <% end -%>
+    <input type="text" placeholder="Search"/>
   </div>
 </div>
 </div>

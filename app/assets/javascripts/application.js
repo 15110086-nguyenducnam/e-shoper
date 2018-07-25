@@ -13,4 +13,10 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+//= require jquery
+//= require cable
+//= require bootstrap.min
+//= jquery
+//= main
+//= jquery.prettyPhoto
+//= jquery.scrollUp.min

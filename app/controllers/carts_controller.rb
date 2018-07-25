@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  # layout
   layout 'application'
 
   def show

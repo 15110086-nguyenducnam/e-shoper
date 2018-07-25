@@ -1,7 +1,4 @@
-class Admin::ProductsController<ApplicationController
-  before_action :authenticate_user!
-
-  layout 'admin'
+class Admin::ProductsController < Admin::BaseController
 
   def index
     @product = Product.new
@@ -16,7 +13,7 @@ class Admin::ProductsController<ApplicationController
 
   def new
     @product = Product.new
-    @category_dashboard=Category.all
+    @category_dashboard = Category.all
   end
 
   def create
