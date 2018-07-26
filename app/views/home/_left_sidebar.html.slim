@@ -1,0 +1,10 @@
+h2
+  | Category
+#accordian.panel-group.category-products
+  - categories_item.each do |o|
+    .panel.panel-default
+      .panel-heading
+        h4.panel-title
+          = link_to(o.name, category_path(id: o.id))
+.shipping.text-center
+  img[src="images/home/shipping.jpg" alt=""]

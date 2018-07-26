@@ -1,0 +1,65 @@
+#views-admin-categories-show.wrapper
+  nav#sidebar.sidebar
+    .sidebar-header
+      |  <a href = 
+      =root_path
+      |  > 
+      =image_tag("home/logo.png")
+    ul.list-unstyled.components
+      li
+        a[href= admin_dashboard_path]
+          | Product
+      li.active
+        |  <a href=
+        = admin_categories_path
+        |  >Brands
+      li
+        a[href="#"]
+          | Users
+      li
+        a[href="#"]
+          | Portfolio
+      li
+        a[href="#"]
+          | Contact
+  #content
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      .container-fluid
+        button#sidebarCollapse.btn.btn-info[type="button"]
+          i.fa.fa-align-justify
+          span
+            | Toggle Sidebar
+        button.btn.btn-dark.d-inline-block.d-lg-none.ml-auto[type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"]
+          i.fas.fa-align-justify
+        #navbarSupportedContent.collapse.navbar-collapse
+          ul.nav.navbar-nav.ml-auto
+            li.nav-item.active
+              |  <a class="nav-link" href= 
+              = root_path
+              |  >
+              i.fa.fa-home
+              |  Home
+            li.nav-item
+              = link_to destroy_user_session_path, class: 'nav-link', method: :delete  do
+                i.fa-sign-out
+                |  Logout 
+    = form_for @category, url: admin_category_path(id: @category.id), method: :put, html: { :multipart => true} do |f|
+      #myModalSua
+        .modal-dialog
+          .modal-content
+            .modal-header.edit-admin
+              span.badge.badge-warning.headerEdit
+
+              h4
+                | Edit Category
+            .modal-body
+              .form-group
+                = f.text_field :id, class: "form-control", id: "masanpham", placeholder: "ID", readonly:true
+              .form-group
+                = f.text_field :name, class: "form-control", placeholder: "Product name", id: "tensanpham"
+              .form-group
+                = f.text_field :description, class: "form-control", id: "mota", placeholder: "Description"
+            .modal-footer
+              = f.button :submit, class: "btn btn-info" do
+                |  Edit 
+              = link_to 'Cancel', admin_categories_path, class: "btn btn-danger"

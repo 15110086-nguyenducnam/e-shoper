@@ -1,0 +1,69 @@
+#views-admin-dashboard-index.wrapper
+  nav#sidebar.sidebar
+    .sidebar-header
+      |  <a href = 
+      =root_path
+      |  > 
+      =image_tag("home/logo.png")
+    ul.list-unstyled.components
+      li.active
+        a[href= admin_dashboard_path]
+          | Product
+      li
+        |  <a href=
+        = admin_categories_path
+        |  >Brands
+      li
+        a[href="#"]
+          | Users
+      li
+        a[href="#"]
+          | Portfolio
+      li
+        a[href="#"]
+          | Contact
+  #content
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      .container-fluid
+        button#sidebarCollapse.btn.btn-info[type="button"]
+          i.fa.fa-align-justify
+          span
+            | Toggle Sidebar
+        button.btn.btn-dark.d-inline-block.d-lg-none.ml-auto[type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"]
+          i.fas.fa-align-justify
+        #navbarSupportedContent.collapse.navbar-collapse
+          ul.nav.navbar-nav.ml-auto
+            li.nav-item.active
+              |  <a class="nav-link" href= 
+              = root_path
+              |  > 
+              i.fa.fa-home
+              |  Home
+            li.nav-item
+              = link_to destroy_user_session_path, class: 'nav-link', method: :delete do
+                i.fa-sign-out
+                |  Logout 
+    h2
+      | Product
+    = link_to new_admin_product_path, class: 'btn btn-outline-success' do
+      i.fa.fa-plus
+      |  Add 
+    #product-list
+      = render 'products/list', products: @get_Product
+  #myModalXoa.modal.fade[role="dialog"]
+    .modal-dialog
+      .modal-content
+        .modal-header.delete-admin
+          span.badge.badge-danger.Delete
+
+          h4
+            | Delete Product
+        .modal-body
+          .form-group
+            h5.modal-title.Delete-text
+        .modal-footer
+          = link_to 'Delete', @product, method: :delete, class: "btn btn-danger btn-delete",id: "btn-delete"
+          button.btn.btn-info[data-dismiss="modal"]
+            | Cancel
+script 
+  | $('#myModalXoa').on('show.bs.modal', function (event) { var button = $(event.relatedTarget) var msp = button.data('masp') var mass = button.data('mass') var modal = $(this)  modal.find('.modal-title').text('Do you want delete "' + msp + '" ?') $("#btn-delete").attr("href","/admin/products/"+mass) });

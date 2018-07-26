@@ -1,8 +1,0 @@
-<% if @success %>
-  // JS to clear form, hide modal
-  $('#myModalXoa').modal('hide');
-  $('.modal-backdrop').remove();
-    $('#new_product')[0].reset()
-    // update list product
-  $('#product-list').html("<%=j render 'products/list', products: @get_Product %>")
-<% end %>

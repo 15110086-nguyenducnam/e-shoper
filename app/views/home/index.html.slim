@@ -1,0 +1,102 @@
+section#slider
+  .container
+    .row
+      .col-sm-12
+        #slider-carousel.carousel.slide[data-ride="carousel"]
+          ol.carousel-indicators
+            li.active[data-target="#slider-carousel" data-slide-to="0"]
+            li[data-target="#slider-carousel" data-slide-to="1"]
+            li[data-target="#slider-carousel" data-slide-to="2"]
+          .carousel-inner
+            .item.active
+              .col-sm-6
+                h1
+                  span
+                    | E
+                  | -SHOPPER
+                h2
+                  | Free E-Commerce Template
+                p
+                  | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididun`t ut labore et dolore magna aliqua. 
+                button.btn.btn-default.get[type="button"]
+                  | Get it now
+              .col-sm-6
+                =image_tag("home/girl1.jpg", class: "girl img-responsive")
+                =image_tag("home/pricing.png", class: "pricing")
+            .item
+              .col-sm-6
+                h1
+                  span
+                    | E
+                  | -SHOPPER
+                h2
+                  | 100% Responsive Design
+                p
+                  | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                button.btn.btn-default.get[type="button"]
+                  | Get it now
+              .col-sm-6
+                =image_tag("home/girl2.jpg", class: "girl img-responsive")
+                =image_tag("home/pricing.png", class: "pricing")
+            .item
+              .col-sm-6
+                h1
+                  span
+                    | E
+                  | -SHOPPER
+                h2
+                  | Free Ecommerce Template
+                p
+                  | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                button.btn.btn-default.get[type="button"]
+                  | Get it now
+              .col-sm-6
+                =image_tag("home/girl3.jpg", class: "girl img-responsive")
+                =image_tag("home/pricing.png", class: "pricing")
+          a.left.control-carousel.hidden-xs[href="#slider-carousel" data-slide="prev"]
+            i.fa.fa-angle-left
+          a.right.control-carousel.hidden-xs[href="#slider-carousel" data-slide="next"]
+            i.fa.fa-angle-right
+section.items
+  .container
+    .row
+      .col-sm-3
+        .left-sidebar
+          = render 'home/left_sidebar', categories_item: @categories_item
+      .col-sm-9.padding-right
+        .features_items
+          h2.title.text-center
+            | Features Items
+          #list-home
+            = render 'products/list-home', producs_user: @producs_user
+        .category-tab
+          .col-sm-12
+            ul.nav.nav-tabs
+              li.active
+                a[href="#tshirt" data-toggle="tab"]
+                  | T-Shirt
+              li
+                a[href="#blazers" data-toggle="tab"]
+                  | Blazers
+              li
+                a[href="#sunglass" data-toggle="tab"]
+                  | Sunglass
+              li
+                a[href="#kids" data-toggle="tab"]
+                  | Kids
+              li
+                a[href="#poloshirt" data-toggle="tab"]
+                  | Polo shirt
+          .tab-content
+            #tshirt.tab-pane.fade.active.in
+              .col-sm-3
+                .product-image-wrapper
+                  .single-products
+                    .productinfo.text-center
+                      =image_tag("home/girl1.jpg")
+                      h2
+                        | $56
+                      p
+                        | Easy Polo Black Edition
+                      button.add-to-cart.btn.btn-default.my-btn[type="button"]
+                        | Add to cart

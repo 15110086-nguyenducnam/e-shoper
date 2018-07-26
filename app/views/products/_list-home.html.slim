@@ -1,0 +1,28 @@
+- producs_user.each do |p|
+  .col-sm-4
+    .product-image-wrapper
+      .single-products
+        .productinfo.text-center
+          = link_to(product_productdetail_path(product_id: p.id)) do
+            = image_tag(p.image_url.to_s, width: '250px', height: '250px')
+          h2
+            | $
+            = p.price
+          p
+            =p.name
+          = form_for @order_item do |f|
+            = f.hidden_field :quantity, value: 1
+            = f.hidden_field :product_id, value: p.id
+            = f.button :submit, class: "add-to-cart btn btn-default" do
+              i.fa.fa-shopping-cart
+              |  Add to cart 
+      .choose
+        ul.nav.nav-pills.nav-justified
+          li
+            a[href="#"]
+              i.fa.fa-plus-square
+              | Add to wishlist
+          li
+            a[href="#"]
+              i.fa.fa-plus-square
+              | Add to compare

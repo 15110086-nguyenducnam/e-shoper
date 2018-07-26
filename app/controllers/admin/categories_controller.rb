@@ -16,8 +16,8 @@ class Admin::CategoriesController < Admin::BaseController
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
-    @get_category = Category.all
-    @success = @category.destroyed?
+    # @success = @category.destroyed?
+    redirect_to admin_dashboard_path
   end
 
   def create

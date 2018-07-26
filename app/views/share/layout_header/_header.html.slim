@@ -1,0 +1,127 @@
+header#header
+  .header_top
+    .container
+      .row
+        .col-sm-6
+          .contactinfo
+            ul.nav.nav-pills
+              li
+                a[href="#"]
+                  i.fa.fa-phone
+                  |  +2 95 01 88 821
+              li
+                a[href="#"]
+                  i.fa.fa-envelope
+                  |  info@domain.com
+        .col-sm-6
+          .social-icons.pull-right
+            ul.nav.navbar-nav
+              li
+                a[href="#"]
+                  i.fa.fa-facebook
+              li
+                a[href="#"]
+                  i.fa.fa-twitter
+              li
+                a[href="#"]
+                  i.fa.fa-linkedin
+              li
+                a[href="#"]
+                  i.fa.fa-dribbble
+              li
+                a[href="#"]
+                  i.fa.fa-google-plus
+  .header-middle
+    .container
+      .row
+        .col-sm-4
+          .logo.pull-left
+            |  <a href=
+            =root_path
+            | >
+            =image_tag("home/logo.png")
+        .col-sm-8
+          .shop-menu.pull-right
+            ul.nav.navbar-nav
+              li
+                a[href=""]
+                  i.fa.fa-user
+                  |  Account
+              li
+                a[href=""]
+                  i.fa.fa-star
+                  |  Wishlist
+              li
+                a[href="checkout.html"]
+                  i.fa.fa-crosshairs
+                  |  Checkout
+              li
+                | <a href= 
+                = carts_show_path
+                |  >
+                i.fa.fa-shopping-cart
+                |  Cart
+              li
+                | <a href=
+                =new_user_session_path
+                |  class="active">
+                i.fa.fa-lock
+                |  Login
+  .header-bottom
+    .container
+      .row
+        .col-sm-9
+          .navbar-header
+            button.navbar-toggle[type="button" data-toggle="collapse" data-target=".navbar-collapse"]
+              span.sr-only
+                | Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+          .mainmenu.pull-left
+            ul.nav.navbar-nav.collapse.navbar-collapse
+              li
+                a[href="index.html"]
+                  | Home
+              li.dropdown
+                a[href="#"]
+                  | Shop
+                  i.fa.fa-angle-down
+                ul.sub-menu[role="menu"]
+                  li
+                    a[href="shop.html"]
+                      | Products
+                  li
+                    a[href="product-details.html"]
+                      | Product Details
+                  li
+                    a[href="checkout.html"]
+                      | Checkout
+                  li
+                    a[href="cart.html"]
+                      | Cart
+                  li
+                    a.active[href="login.html"]
+                      | Login
+              li.dropdown
+                a[href="#"]
+                  | Blog
+                  i.fa.fa-angle-down
+                ul.sub-menu[role="menu"]
+                  li
+                    a[href="blog.html"]
+                      | Blog List
+                  li
+                    a[href="blog-single.html"]
+                      | Blog Single
+              li
+                a[href="404.html"]
+                  | 404
+              li
+                a[href="contact-us.html"]
+                  | Contact
+        .col-sm-3
+          .search_box.pull-right
+            = form_for 'product',url: products_path, method: :get, id: "form-search" do |f|
+              = f.text_field :name, placeholder: "Search"
+              = f.submit "Search"

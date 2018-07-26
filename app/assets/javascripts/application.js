@@ -16,7 +16,6 @@
 //= require jquery
 //= require cable
 //= require bootstrap.min
-//= jquery
-//= main
-//= jquery.prettyPhoto
-//= jquery.scrollUp.min
+//= require main
+//= resuire jquery.prettyPhoto
+//= require jquery.scrollUp.min

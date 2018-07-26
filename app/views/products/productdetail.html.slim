@@ -1,0 +1,71 @@
+section
+  .container
+    .row
+      .col-sm-3
+        .left-sidebar
+          = render 'home/left_sidebar', categories_item: @categories_item
+      .col-sm-9.padding-right
+        .product-details
+          .col-sm-5
+            #similar-product.carousel.slide[data-ride="carousel"]
+              .carousel-inner
+                .item.active
+                  = image_tag(@product_detail.image_url.to_s)
+                  a[href=""]
+                    img[src="images/product-details/similar2.jpg" alt=""]
+                  a[href=""]
+                    img[src="images/product-details/similar3.jpg" alt=""]
+                .item
+                  a[href=""]
+                    img[src="images/product-details/similar1.jpg" alt=""]
+                  a[href=""]
+                    img[src="images/product-details/similar2.jpg" alt=""]
+                  a[href=""]
+                    img[src="images/product-details/similar3.jpg" alt=""]
+                .item
+                  a[href=""]
+                    img[src="images/product-details/similar1.jpg" alt=""]
+                  a[href=""]
+                    img[src="images/product-details/similar2.jpg" alt=""]
+                  a[href=""]
+                    img[src="images/product-details/similar3.jpg" alt=""]
+              a.left.item-control[href="#similar-product" data-slide="prev"]
+                i.fa.fa-angle-left
+              a.right.item-control[href="#similar-product" data-slide="next"]
+                i.fa.fa-angle-right
+          .col-sm-7
+            .product-information
+              img.newarrival[src="images/product-details/new.jpg" alt=""]
+              h2
+                = @product_detail.name
+              p
+                | Web ID: 
+                = @product_detail.id
+              img[src="images/product-details/rating.png" alt=""]
+              span
+                span
+                  | US $ 
+                  = @product_detail.price
+                label
+                  | Quantity:
+                input[type="text" value="3"]
+                = form_for @order_item, remote: true do |f|
+                  = f.hidden_field :quantity, value: 1
+                  = f.hidden_field :product_id, value: @product_detail.id
+                  = f.button :submit, class: "add-to-cart btn btn-default my-btn" do
+                    i.fa.fa-shopping-cart
+                    |  Add to cart 
+              p
+                b
+                  | Availability:
+                |  In Stock
+              p
+                b
+                  | Condition:
+                |  New
+              p
+                b
+                  | Category:
+                = @product_detail.category.name
+              a[href=""]
+                img.share.img-responsive[src="images/product-details/share.png" alt=""]

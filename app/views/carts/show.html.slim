@@ -1,0 +1,12 @@
+section#cart_items
+  .container
+    .breadcrumbs
+      ol.breadcrumb
+        li
+          a[href="#"]
+            | Home
+        li.active
+          | Shopping Cart
+    .table-responsive.cart_info
+      #product-index-list
+        = render 'order_items/list', order_items: @order_items

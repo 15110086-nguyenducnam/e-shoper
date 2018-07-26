@@ -70,8 +70,12 @@ gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "omniauth-facebook"
 gem "figaro"
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.1.2'
 # picture
 gem 'carrierwave'
 # search
 gem 'pg_search'
+#  font awesome
+gem "font-awesome-rails"
+gem 'slim'
+gem 'jquery-rails'
