@@ -1,7 +1,7 @@
 class OrderItemsController < ApplicationController
 
   def create
-     @order=current_order
+    @order = current_order
     if @order_item = @order.order_items.find_by(product_id: params[:order_item][:product_id])
         number = @order_item.quantity.to_f + 1
         @order_item.update_attribute :quantity, number
@@ -31,6 +31,7 @@ class OrderItemsController < ApplicationController
       end
     end
     @order_items = @order.order_items
+    redirect_to carts_show_path
   end
 
   def destroy
@@ -39,6 +40,7 @@ class OrderItemsController < ApplicationController
     @order_item.destroy
     @success = @order_item.destroyed?
     @order_items = @order.order_items
+    redirect_to carts_show_path
   end
 
   private

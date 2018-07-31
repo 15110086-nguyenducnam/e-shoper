@@ -1,0 +1,23 @@
+.jumbotron.text-center
+  h2
+    | Payment!!!
+.container
+  .d-flex.justify-content-center.align-items-center.container
+    .row-reset-password
+      = form_for(@registration) do |f|
+        .form-group
+          = f.hidden_field :order_id, value: @order.id
+          = f.label :user_name,for: "User name"
+          br
+          = f.text_field :user_name, autofocus: true, autocomplete: "User name", class: "form-control",required: true
+        .form-group
+          = f.label :address
+          br
+          = f.text_field :address, required: true, class:"form-control"
+        .form-group
+          = f.label :email
+          br
+          = f.email_field :email, required: true, class:"form-control"
+        = f.button :submit,class: "btn btn-outline-success" do
+          |  Buy now
+         

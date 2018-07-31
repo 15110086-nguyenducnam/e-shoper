@@ -79,3 +79,4 @@ gem 'pg_search'
 gem "font-awesome-rails"
 gem 'slim'
 gem 'jquery-rails'
+gem 'rmagick', '~> 2.16'

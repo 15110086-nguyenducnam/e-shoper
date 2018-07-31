@@ -4,7 +4,7 @@
       .single-products
         .productinfo.text-center
           = link_to(product_productdetail_path(product_id: p.id)) do
-            = image_tag(p.image_url.to_s, width: '250px', height: '250px')
+            = image_tag(p.image_url.to_s)
           h2
             | $
             = p.price
@@ -16,13 +16,3 @@
             = f.button :submit, class: "add-to-cart btn btn-default" do
               i.fa.fa-shopping-cart
               |  Add to cart 
-      .choose
-        ul.nav.nav-pills.nav-justified
-          li
-            a[href="#"]
-              i.fa.fa-plus-square
-              | Add to wishlist
-          li
-            a[href="#"]
-              i.fa.fa-plus-square
-              | Add to compare

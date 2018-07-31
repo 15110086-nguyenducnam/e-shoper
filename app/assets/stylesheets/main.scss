@@ -262,11 +262,13 @@ a#scrollUp i{
   height: 35px;
   outline: medium none;
   padding-left: 10px;
-  background-image: url(../images/home/searchicon.png);
-  background-repeat: no-repeat;
-  background-position: 130px;
 }
-
+.search_box button{
+  background: #f0f0e9;
+  color: #B2B2B2;
+  height: 35px;
+  border: medium;
+}
 
 /*  Dropdown menu*/
 

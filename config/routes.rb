@@ -17,4 +17,8 @@ Rails.application.routes.draw do
   resources :order_items, only: [:create, :update, :destroy]
   resources :home
   resources :categories
+
+  resources :registrations
+  post "/hook" => "registrations#hook"
+  post "/registrations/:id" => "registrations#show"
 end

@@ -23,17 +23,18 @@ class OrderItem < ApplicationRecord
     unit_price * quantity
   end
 
-   private
-   def product_present
-     if product.nil?
-       error.add(:product, "is not valid or is not active")
-     end
-   end
-   def oder_present
-     if order.nil?
-       errors.add(:order, "is not a valid order")
-     end
-   end
+  private
+  def product_present
+  if product.nil?
+      error.add(:product, "is not valid or is not active")
+    end
+  end
+
+  def oder_present
+    if order.nil?
+      errors.add(:order, "is not a valid order")
+    end
+  end
 
   def finalize
     self[:unit_price] = unit_price

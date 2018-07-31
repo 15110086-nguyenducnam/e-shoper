@@ -64,7 +64,7 @@ header#header
               li
                 | <a href=
                 =new_user_session_path
-                |  class="active">
+                | >
                 i.fa.fa-lock
                 |  Login
   .header-bottom
@@ -81,7 +81,7 @@ header#header
           .mainmenu.pull-left
             ul.nav.navbar-nav.collapse.navbar-collapse
               li
-                a[href="index.html"]
+                a[href= root_path]
                   | Home
               li.dropdown
                 a[href="#"]
@@ -92,16 +92,13 @@ header#header
                     a[href="shop.html"]
                       | Products
                   li
-                    a[href="product-details.html"]
-                      | Product Details
-                  li
                     a[href="checkout.html"]
                       | Checkout
                   li
-                    a[href="cart.html"]
+                    a[href= carts_show_path]
                       | Cart
                   li
-                    a.active[href="login.html"]
+                    a.active[href=new_user_session_path]
                       | Login
               li.dropdown
                 a[href="#"]
@@ -123,5 +120,6 @@ header#header
         .col-sm-3
           .search_box.pull-right
             = form_for 'product',url: products_path, method: :get, id: "form-search" do |f|
-              = f.text_field :name, placeholder: "Search"
-              = f.submit "Search"
+              = f.text_field :name, placeholder: "Search", class: "col-sm-9"
+              = f.button type: "submit", class: "col-sm-3"
+                .fa.fa-search

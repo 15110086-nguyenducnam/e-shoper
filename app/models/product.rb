@@ -10,12 +10,15 @@ class Product < ApplicationRecord
 
   attr_accessor :image
   include PgSearch
+
+  # mount_uploader :image, ImageUploader
+  mount_uploader :image, ImageUploader
+
   pg_search_scope :search_by_full_name, against: [:name],
    using: {
     tsearch: {
       prefix: true
     }
    }
-  # mount_uploader :image, ImageUploader
-  mount_uploader :image, ImageUploader
+  
 end
