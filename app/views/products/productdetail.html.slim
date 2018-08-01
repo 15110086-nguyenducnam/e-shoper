@@ -15,24 +15,6 @@ section
                     img[src="images/product-details/similar2.jpg" alt=""]
                   a[href=""]
                     img[src="images/product-details/similar3.jpg" alt=""]
-                .item
-                  a[href=""]
-                    img[src="images/product-details/similar1.jpg" alt=""]
-                  a[href=""]
-                    img[src="images/product-details/similar2.jpg" alt=""]
-                  a[href=""]
-                    img[src="images/product-details/similar3.jpg" alt=""]
-                .item
-                  a[href=""]
-                    img[src="images/product-details/similar1.jpg" alt=""]
-                  a[href=""]
-                    img[src="images/product-details/similar2.jpg" alt=""]
-                  a[href=""]
-                    img[src="images/product-details/similar3.jpg" alt=""]
-              a.left.item-control[href="#similar-product" data-slide="prev"]
-                i.fa.fa-angle-left
-              a.right.item-control[href="#similar-product" data-slide="next"]
-                i.fa.fa-angle-right
           .col-sm-7
             .product-information
               img.newarrival[src="images/product-details/new.jpg" alt=""]
@@ -46,9 +28,6 @@ section
                 span
                   | US $ 
                   = @product_detail.price
-                label
-                  | Quantity:
-                input[type="text" value="3"]
                 = form_for @order_item, remote: true do |f|
                   = f.hidden_field :quantity, value: 1
                   = f.hidden_field :product_id, value: @product_detail.id
@@ -57,15 +36,15 @@ section
                     |  Add to cart 
               p
                 b
-                  | Availability:
+                 | Availability:
                 |  In Stock
               p
                 b
-                  | Condition:
-                |  New
+                  | Condition: 
+                = @product_detail.description
               p
                 b
-                  | Category:
+                  | Category: 
                 = @product_detail.category.name
               a[href=""]
                 img.share.img-responsive[src="images/product-details/share.png" alt=""]

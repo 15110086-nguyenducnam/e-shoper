@@ -1,0 +1,45 @@
+table.table.table-condensed
+  thead
+    tr.cart_menu
+      td.image
+        | Item
+      td.description
+      td.price
+        | Price
+      td.quantity
+        | Quantity
+      td.total
+        | Total
+      td
+  tbody
+    - order_items.each do |o|
+      tr
+        td.cart_product
+          = link_to(product_productdetail_path(product_id: o.product.id)) do
+            = image_tag(o.product.image_url, hight: '110px', width: '110px')
+        td.cart_description
+          h4
+            a[href= product_productdetail_path(product_id: o.product.id)]
+              = o.product.name
+        td.cart_price
+          p
+            | $
+            = o.unit_price
+        td.cart_quantity
+          .cart_quantity_button
+            = link_to('+', order_item_path(id: o.id,add: true), class: "cart_quantity", method: "put")
+            |  <input class="cart_quantity_input" type="text" name="quantity" value=
+            = o.quantity
+            |  autocomplete="off" size="2"> 
+            = link_to("-", order_item_path(id: o.id, sub: true), class: "cart_quantity", method: "put")
+        td.cart_total
+          p.cart_total_price
+            | $ 
+            = o.total_price
+        td.cart_delete
+          = link_to order_item_path(id: o.id), method: "delete", class: "cart_quantity_delete" do
+            i.fa.fa-times
+.cart_total_price
+  | Total: $ 
+  = order.subtotal
+= link_to "<button class='add-to-cart btn btn-default'>Payment</button>".html_safe,new_registration_path(order_id: order.id)

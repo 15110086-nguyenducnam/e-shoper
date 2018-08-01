@@ -56,15 +56,11 @@ header#header
                     i.fa.fa-user
                     = current_user.username
               li
-                a[href=""]
-                  i.fa.fa-star
-                  |  Wishlist
-              li
                 a[href="checkout.html"]
                   i.fa.fa-crosshairs
                   |  Checkout
               li
-                a[href="cart.html"]
+                a[href= carts_show_path]
                   i.fa.fa-shopping-cart
                   |  Cart
               li
@@ -85,7 +81,7 @@ header#header
           .mainmenu.pull-left
             ul.nav.navbar-nav.collapse.navbar-collapse
               li
-                a[href="index.html"]
+                a[href= root_path]
                   | Home
               li.dropdown
                 a[href="#"]
@@ -93,20 +89,14 @@ header#header
                   i.fa.fa-angle-down
                 ul.sub-menu[role="menu"]
                   li
-                    a[href="shop.html"]
+                    a[href="#features_items"]
                       | Products
-                  li
-                    a[href="product-details.html"]
-                      | Product Details
                   li
                     a[href="checkout.html"]
                       | Checkout
                   li
-                    a[href="cart.html"]
+                    a[href= carts_show_path]
                       | Cart
-                  li
-                    a.active[href="login.html"]
-                      | Login
               li.dropdown
                 a[href="#"]
                   | Blog
